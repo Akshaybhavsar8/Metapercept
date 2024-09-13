@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 15px;
+      max-width: 300px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+    .card-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 150px; /* Adjust this value to fit your design */
+    }
+    .card-title {
+      font-size: 1.2em;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .card-text {
+      font-size: 0.9em;
+      color: #555;
+      margin: 10px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .btn {
+      margin-top: auto; /* Push button to the bottom of the card */
+    }
+    .footer {
+      padding: 1rem;
+      background-color: #f8f9fa;
+    }
+    .panel-heading{
+        text-align: center;
+        font-size: 20px;
+    }
+    .container-sm{
+        background-color: #6482AD;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Brand</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li>
+            <button type="button" value="Button">
+              <a class="nav-link" href="#">Button</a>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-sm my-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2>Title</h2></div>
+      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row" id="cards-container">
+    </div>
+  </div>
+
+  <footer class="footer mt-auto">
+    <p>Copyright @ 2021 </p>
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const courses = [
+      {
+        "ID": "BasicTechnicalWriting",
+        "ImageUrl": "https://metapercept.com/images/training-certification/Basic-DITA%E2%80%93XML.jpg",
+        "Name": "Basic Technical Writing",
+        "ShortDesc": "This course focuses on understanding the basics of technical writing and developing technical writing skills. In this course you will learn techniques to analyze writing contexts which helps you to produce effective, clean, and reader-center documents efficiently."
+      },
+      {
+        "ID": "ConfluenceAdvanced",
+        "ImageUrl": "https://metapercept.com/images/training-certification/Advanced-DITA–XML.jpg",
+        "Name": "Confluence Advanced",
+        "ShortDesc": "This course focuses to ensure your documentation-type content is easy to manage and consume. This skill builder covers useful techniques to surface relevant documentation and standardize your content using templates and blueprints. It includes how to set up a knowledge-base in Confluence for self- service customer support in JIRA Service Desk. It is useful for both Confluence Server Administrators and Confluence Cloud Administrators."
+      },
+      {
+        "ID": "ConfluenceBasic",
+        "ImageUrl": "images/training-certification/Authoring-Tools.jpg",
+        "Name": "Confluence Basic",
+        "ShortDesc": "This course guide end users to create their own easy to use and well-formatted content. This Skillbuilder covers templates, page and space structure, and categorization for content governance and discovery. It includes using cases, common/practical examples, best practices, and suggested solutions to structure and display your Confluence space content effectively using built-in features."
+      },
+      {
+        "ID": "XMLAuthor",
+        "ImageUrl": "images/training-certification/Simplified-Technical-English.jpg",
+        "Name": "XML Author",
+        "ShortDesc": "This course focuses deepen the knowledge in XML Author, in any industry. In this course, you'll learn about writing content in a fully structured and easy–to–use environment optimized for producing valid XML and production of multiple outputs for print and online delivery."
+      },
+      {
+        "ID": "AdvancedTechnicalWriting-API",
+        "ImageUrl": "images/training-certification/Technical-Writing.jpg",
+        "Name": "Advanced Technical Writing - API",
+        "ShortDesc": "This course focuses on deepening the knoweldge of technical content deliverable, containing instructions about how to effectively use and integrate with an API. It’s a concise reference manual containing all the information required to work with the API, with details about the functions, classes, return types, arguments and more, supported by tutorials and examples."
+      },
+      {
+        "ID": "BasicDITA-XML",
+        "ImageUrl": "images/training-certification/Authoring-Tools.jpg",
+        "Name": "Basic DITA-XML",
+        "ShortDesc": "This course focuses on individuals keen to broaden their knowledge or specialize in basic DITA- XML, in any industry. This course, focuses on what writers of business documents need to think and do differently to get their jobs done quickly and efficiently with DITA."
+      },
+      {
+        "ID": "AdvancedDITA-XML",
+        "ImageUrl": "images/training-certification/Basic-DITA–XML.jpg",
+        "Name": "Advanced DITA-XML",
+        "ShortDesc": "This course focuses on individuals keen to broaden their knowledge or specialize in advanced DITA- XML, in any industry. This course, focuses on what writers of business documents need to think and do differently to get their jobs done quickly and efficiently with DITA."
+      },
+      {
+        "ID": "xMetaLAuthor",
+        "ImageUrl": "images/training-certification/Advanced-DITA–XML.jpg",
+        "Name": "xMetal Author",
+        "ShortDesc": "Learn xMetal for XML based authoring to manage high volume structured content development and management. This training program is meant for the Technical Writers, Technical Authors, and Information Developers, working on high-end documentation for Automobile, Aerospace, Hardware, and Manufacturing business domains."
+      },
+      {
+        "ID": "MadCapFlare",
+        "ImageUrl": "images/training-certification/Technical-Writing.jpg",
+        "Name": "MadCap Flare",
+        "ShortDesc": "This course focuses on developing technical writing skills to deepen the knowledge of Madcap Flare for writing specialized content in structured format using DITA-XML and other structured formats. This course use a combination of lectures, demonstrations, and hands-on practice exercises to explore the major features of Flare."
+      }
+    ];
+
+    function displayCards() {
+      const container = document.getElementById('cards-container');
+      let cardsHtml = '';
+
+      courses.forEach((course, index) => {
+        const cardHtml = `
+          <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+              <img src="${course.ImageUrl}" class="card-img-top" alt="${course.Name}">
+              <div class="card-body">
+                <h5 class="card-title">${course.Name}</h5>
+                <p class="card-text">${course.ShortDesc}</p>
+                <a href="#" class="btn btn-primary">View More</a>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        cardsHtml += cardHtml;
+        
+        if (index === 8) return false;
+      });
+
+      container.innerHTML = cardsHtml;
+    }
+    displayCards();
+  </script>
+</body>
+</html>
